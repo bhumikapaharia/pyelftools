@@ -25,6 +25,8 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Test
       run: |
+        pip install tox
+        tox -e py38
         python test/all_tests.py
 
   armv64_job:
@@ -47,5 +49,6 @@ jobs:
               uname -m && \
               python setup.py install && \
               pip install tox && \
+              tox -e py38 && \
               python test/all_tests.py && \ 
               deactivate'
